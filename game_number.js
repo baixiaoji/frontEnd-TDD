@@ -1,4 +1,4 @@
-export default function gameNumber(input) {
+export default function gameNumber(input){
   function isDivisionBy(number) {
     return input % number === 0;
   }
