@@ -1,16 +1,16 @@
-import GameNumber from './game_number.js';
+import gameNumber from './game_number'
 
-describe('testing GameNumber', function() {
+describe('testing gameNumber', function() {
   it('should return Fizz when input division by 3', function() {
-    expect(GameNumber(3)).toBe('Fizz');
+    expect(gameNumber(3)).toBe('Fizz');
   });
   it('should return Buzz when input division by 5', function() {
-    expect(GameNumber(5)).toBe('Buzz');
+    expect(gameNumber(5)).toBe('Buzz');
   });
   it('should return FizzBuzz when input division by 15', function() {
-    expect(GameNumber(15)).toBe('FizzBuzz');
+    expect(gameNumber(15)).toBe('FizzBuzz');
   });
-  it('should return input when input is not division by above number', function() {
-    expect(GameNumber(4)).toBe(4);
+  it('should return itself when input can not division by above number', function() {
+    expect(gameNumber(11)).toBe(11);
   });
 });
