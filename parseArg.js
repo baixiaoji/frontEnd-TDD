@@ -1,14 +1,21 @@
-function splitString(input) {
-  return input.split(',').map(item => parseInt(item));
+const typeMap = {
+  boolean: Boolean,
+  number: parseInt,
+  string: String,
+};
+function convertType(input, type) {
+  return (typeMap[type] && typeMap[type](input)) || input;
 }
-function returnCurrentTypeValue(string, type) {
-  const typeMap = {
-    boolean: Boolean,
-    number: parseInt,
-    string: String,
-    array: splitString,
-  };
-  return (typeMap[type] && typeMap[type](string)) || string;
+function splitString(input, type) {
+  return input.split(',').map(item => convertType(item, type));
+}
+
+function returnCurrentTypeValue(input, type) {
+  if (type.indexOf('[]') >= 0) {
+    const arrayItemType = type.replace('[]', '');
+    return splitString(input, arrayItemType)
+  }
+  return convertType(input, type);
 }
 
 function returnCurrentTypeDefaultValue(type) {
